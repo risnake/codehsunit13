@@ -1,0 +1,35 @@
+function main() {
+    let length = readInt("gib length");
+    while(length < 100 || length > 400){
+        length = readInt("too big");
+    }
+    
+    let barcode = generateBarcode(length);
+    printBarcode(barcode);
+}
+
+function generateBarcode(length){
+    let barcode = [];
+    for (let i = 0; i < length; i++) {
+        barcode.push(Randomizer.nextBoolean());
+    }
+    return barcode;
+}
+
+function printBarcode(barcode) {
+    const WIDTH = barcode.length;
+    const HEIGHT = 100;
+    
+    setSize(WIDTH,HEIGHT);
+    
+    for (let i = 0; i < barcode.length; i++){
+        if (barcode[i]) {
+            let line = new Line(i,0,i,HEIGHT);
+            line.setLineWidth(1);
+            add(line);
+        }
+    }
+}
+
+
+main();
