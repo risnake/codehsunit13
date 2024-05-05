@@ -1,0 +1,37 @@
+// Two people's list of friends. DO NOT CHANGE THESE LISTS!!
+let friends1 = [
+    'John', 'Richard', 'Andrew', 'Daniel', 
+    'Ernest', 'Will', 'Jesse', 'Oscar', 
+    'William', 'Charles', 'Frank', 'Joseph', 
+    'Thomas', 'Henry', 'Edward', 'Harry', 
+    'Walter', 'Fred', 'Samuel', 'David', 
+    'Louis', 'Joe'];
+
+let friends2 = [
+    'William', 'James', 'George', 'Frank', 
+    'Thomas', 'Henry', 'Robert', 'Arthur', 
+    'Fred', 'Lewis', 'Peter', 'Benjamin', 
+    'Frederick', 'Willie', 'Alfred', 'Roy',
+    'Herbert', 'Albert', 'Samuel', 'Louis'];
+
+function main() {
+    console.log("First person has " + friends1.length + " friends.");
+    console.log("Second person has " + friends2.length + " friends.");
+    console.log("");
+    
+    let m = findMutual(friends1,friends2);
+    console.log("There are 3 mutual friends: " + m.length + ":");
+    console.log(m.join("\n"));
+   
+}
+function findMutual(arr1,arr2){
+    let mutual = [];
+    arr1.forEach(function(name) {
+        if (arr2.indexOf(name) > -1) {
+            mutual.push(name);
+        }
+    });
+    return mutual;
+}
+
+main();
