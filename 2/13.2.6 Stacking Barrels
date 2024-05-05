@@ -1,0 +1,25 @@
+function addToStack(stack,barrel){
+    stack.push(barrel);
+}
+function removeTopOfStack(stack){
+    if (stack.length == 0) {
+        console.log("Stack is empty.");
+        return null;
+    }
+    return stack.pop();
+    
+}
+function main(){
+    let stack = [];
+    addToStack(stack,"red");
+    addToStack(stack,"blue");
+    addToStack(stack,"green");
+    console.log(stack);
+    
+    let removedBarrel = removeTopOfStack(stack);
+    if (removedBarrel != null){
+        console.log(removedBarrel);
+    }
+    console.log(stack);
+}
+main();
