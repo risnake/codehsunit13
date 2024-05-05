@@ -1,0 +1,20 @@
+function reverseList(arr) {
+    let reversedArr = [];
+    for (let i = arr.length - 1; i >= 0; i--) {
+        reversedArr.push(arr[i]);
+    }
+    return reversedArr;
+}
+function main() {
+    let arr = [1,2,3,4];
+    let reversed = reverseList(arr);
+    
+    console.log(arr);
+    console.log(reversed);
+    
+    let names = ['bob','bob2','bob3','bob4'];
+    let reversedNames = reverseList(names);
+    console.log(names);
+    console.log(reversedNames);
+}
+main();
