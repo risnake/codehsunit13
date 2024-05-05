@@ -1,0 +1,48 @@
+// Density of iron in g/cm^3
+const DENSITY = 7.874; 
+
+// Collected data of weights in lbs
+let data = [0.35, 0.20, 1.52, 0.12, 0.85, 0.48, 0.39, 0.94, 1.43, 0.65, 0.68, 1.09, 0.77, 1.1, 0.34];
+
+function checkData(data) {
+    return data.every(value => typeof value == 'number');
+}
+
+function convert(data,ogUnit,newUnit){
+    if (ogUnit == 'lbs' && newUnit == 'g'){
+        return data.map(value => value * 454);
+    } else if (ogUnit == 'g' && newUnit == 'lbs') {
+        return data.map(value/454);
+    } else {
+        console.log('Invalid units.');
+        return [];
+    }
+}
+
+function calcVol(masses,density){
+    return masses.map(mass => mass / density);
+}
+
+function dataPrint (data,unit){
+    data.forEach((value, index) => {
+        console.log(index + value.toFixed(2) + unit);
+    });
+}
+function main() {
+    // Make a copy of the data so we don't alter original array. Use this array
+    // in your program:
+    let lbWeights = data.slice();
+    
+    const areNumOnly = checkData(lbWeights);
+    console.log('The data are all numbers: ' + areNumOnly);
+    console.log("");
+    
+    const gramWeights = convert(lbWeights, 'lbs', 'g');
+    const volumes = calcVol(gramWeights, DENSITY);
+    
+    console.log('Volumes in cm^3');
+    dataPrint(volumes, 'cm^3')
+
+}
+
+main();
