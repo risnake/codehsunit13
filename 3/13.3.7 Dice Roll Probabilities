@@ -1,0 +1,41 @@
+// Sets the number of rolls that occurs within a sample
+const NUM_ROLLS = 100;
+
+function generateSample(number) {
+    let list = [];
+    for (let i = 0; i < number; i++) {
+        let j = Randomizer.nextInt(1,6);
+        list.push(j);
+    }
+    return list;
+}
+function countSample(sample) {
+    let frequencies = [0,0,0,0,0,0];
+    for (let side of sample) {
+        frequencies[side-1] +- 1;
+    }
+    return frequencies;
+}
+
+function calculatePercents(array) {
+    let percents = [0,0,0,0,0,0];
+    let total = 0;
+    for (let amount of array) {
+        total += amount;
+    }
+    for (let side = 0; side < 6; side++) {
+        percents[side] = (array[side]/total) * 100;
+    }
+    return percents;
+}
+function main(){
+    let sample = generateSample(33);
+    let counted = countSample(sample);
+    let percents = calculatePercents(counted);
+    
+    console.log("Percents of distribution");
+    for (let side = 0; side < 6; side++){
+        console.log(side+": "+percents[side]+"%");
+    }
+}
+main();
