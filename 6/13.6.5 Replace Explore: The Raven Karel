@@ -1,0 +1,18 @@
+function main() {
+    let theRaven = "Quoth the Raven \"Nevermore.\"\nQuoth the Raven \"Nevermore.\"\nQuoth the Raven \"Nevermore.\"";
+    console.log("Original:");
+    console.log(theRaven)
+    
+    console.log("***********************");
+    //Changes all of the occurences of Raven to Karel
+    let theKarel = theRaven.replaceAll("Raven", "Karel");
+    console.log(theKarel);
+    
+    console.log("***********************");
+    //Your turn! Change all of the occurrences of "Nevermore" in the new theKarel string to a word or phrase of your choosing!
+    
+    let heeheeheehaw = theRaven.replaceAll("Raven","HeeHaw");
+    console.log(heeheeheehaw);
+}
+
+main();
