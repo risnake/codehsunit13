@@ -1,0 +1,13 @@
+function main() {
+    let text = "WHAT ARE YOU DOING TODAY?!";
+    turnItDown(text);
+}
+
+//write your turnItDown function here
+
+function turnItDown(r){
+    let m = r.toLowerCase();
+    let n = m.replaceAll("!",":)")
+    console.log(n);
+}
+main();
