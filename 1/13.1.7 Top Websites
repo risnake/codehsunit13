@@ -1,0 +1,11 @@
+function main() {
+	let monkey = ["youtube.com","minecraft.net","freemoney.com"];
+	console.log(monkey[2]);
+	
+	monkey[0] = "codehs.com";
+	
+	console.log(monkey[0]);
+	
+	
+}
+main();
