@@ -1,0 +1,156 @@
+const NUM_CLOUDS = 5;
+const NUM_CARS = 8;
+const NUM_BUILDINGS = 5;
+const ROAD_HEIGHT = 50;
+
+let clouds = [];
+let cars = [];
+let buildings = [];
+let road;
+
+let sky = new Rectangle(2000,2000);
+sky.setColor("skyblue");
+add(sky);
+
+function main() {
+    setSize(800, 600);
+    initScene();
+    setTimer(moveScene, 30);
+}
+
+function initScene() {
+    // Background layer (buildings)
+    for (let i = 0; i < NUM_BUILDINGS; i++) {
+        if (i % 2 == 0){
+            let building = createBuilding();
+            building.setPosition(Randomizer.nextInt(0, getWidth()), 350);
+            building.layer = 1;
+            add(building);
+            buildings.push(building);
+        }
+    }
+    
+    // Midground layer (cars and road)
+    road = new Rectangle(getWidth(), ROAD_HEIGHT);
+    road.setPosition(0, getHeight() - ROAD_HEIGHT);
+    road.setColor("black");
+    add(road);
+    
+    for (let i = 0; i < NUM_CARS; i++) {
+        if (i % 2 == 0){
+            let car = createCar();
+            car.setPosition(Randomizer.nextInt(0, getWidth()), 540);
+            car.layer = 2;
+            add(car);
+            cars.push(car);
+        }
+    }
+    
+    // Foreground layer (clouds)
+    for (let i = 0; i < NUM_CLOUDS; i++) {
+        let cloud = createCloud();
+        cloud.setPosition(Randomizer.nextInt(0, getWidth()), Randomizer.nextInt(0, getHeight() / 3));
+        cloud.layer = 3;
+        add(cloud);
+        clouds.push(cloud);
+    }
+}
+
+function createBuilding() {
+    let building = new Group();
+    
+    let base = new Rectangle(100, 200);
+    base.setColor("darkgray");
+    building.add(base);
+    
+    let top = new Rectangle(80, 100);
+    top.setPosition(10, 100);
+    top.setColor("gray");
+    building.add(top);
+    
+    let window1 = new Rectangle(10, 20);
+    window1.setPosition(20, 120);
+    window1.setColor("yellow");
+    building.add(window1);
+    
+    let window2 = new Rectangle(10, 20);
+    window2.setPosition(60, 120);
+    window2.setColor("yellow");
+    building.add(window2);
+    
+    return building;
+}
+
+function createCar() {
+    let car = new Group();
+    
+    let body = new Rectangle(80, 30);
+    body.setColor("red");
+    car.add(body);
+    
+    let window = new Rectangle(20, 20);
+    window.setPosition(10, 5);
+    window.setColor("lightgray");
+    car.add(window);
+    
+    let wheel1 = new Circle(10);
+    wheel1.setPosition(15, 30);
+    wheel1.setColor("darkgrey");
+    car.add(wheel1);
+    
+    let wheel2 = new Circle(10);
+    wheel2.setPosition(65, 30);
+    wheel2.setColor("darkgrey");
+    car.add(wheel2);
+    
+    return car;
+}
+
+function createCloud() {
+    let cloud = new Group();
+    
+    let circle1 = new Circle(30);
+    circle1.setColor("white");
+    cloud.add(circle1);
+    
+    let circle2 = new Circle(25);
+    circle2.setPosition(20, 0);
+    circle2.setColor("white");
+    cloud.add(circle2);
+    
+    let circle3 = new Circle(20);
+    circle3.setPosition(-15, -10);
+    circle3.setColor("white");
+    cloud.add(circle3);
+    
+    return cloud;
+}
+
+function moveScene() {
+    const FOREGROUND_SPEED = 2;
+    const MIDGROUND_SPEED = 5;
+    const BACKGROUND_SPEED = 1;
+    
+    for (let obj of clouds) {
+        obj.move(FOREGROUND_SPEED, 0);
+        if (obj.getX() > getWidth() + 200) {
+            obj.setPosition(0 - 200, Randomizer.nextInt(0, getHeight() / 3));
+        }
+    }
+    
+    for (let obj of cars) {
+        obj.move(-MIDGROUND_SPEED, 0);
+        if (obj.getX() + 200 < 0) {
+            obj.setPosition(getWidth(), 540);
+        }
+    }
+    
+    for (let obj of buildings) {
+        obj.move(BACKGROUND_SPEED, 0);
+        if (obj.getX() > getWidth()+ 200) {
+            obj.setPosition(0 - 200, 350);
+        }
+    }
+}
+
+main();
