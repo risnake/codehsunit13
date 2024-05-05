@@ -1,0 +1,44 @@
+const T_H = 150;
+const T_W = 20;
+const P_W = 80;
+const P_H = 20;
+const R_S = 2;
+
+let proppp = [];
+
+function main() {
+    setSize(400,400);
+    
+    let background = new Rectangle(getWidth(),getHeight());
+    background.setColor("lightblue");
+    add(background);
+    
+    cWT(50,300);
+    cWT(200,200);
+    cWT(350,350);
+    
+    setTimer(animateprops,30);
+}
+
+function cWT(x,y) {
+    let tower = new Rectangle(T_W, T_H);
+    tower.setPosition(x,y);
+    tower.setColor("grey");
+    add(tower);
+    
+    let prop = new Rectangle(P_W,P_H);
+    prop.setPosition(x - 30,y + ((-T_H - P_H) / 2) + 80);
+    prop.setColor("white");
+    prop.setRotation(45);
+    add(prop);
+    
+    proppp.push(prop);
+}
+
+function animateprops() {
+    for (let prop of proppp){
+        prop.rotate(R_S);
+    }
+}
+
+main();
