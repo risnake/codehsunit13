@@ -1,0 +1,31 @@
+function generateList(length) {
+    const list = [];
+    for (let i=0; i < length; i++){
+        const randomNumber = Math.floor(Math.random() * 100) + 1;
+        list.push(randomNumber);
+    }
+    return list;
+}
+
+function onlyEvens(numbers){
+    const evenNumbers = [];
+    for (const number of numbers) {
+        if (number % 2 == 0) {
+            evenNumbers.push(number);
+        }
+    }
+    return evenNumbers;
+}
+
+function main() {
+    const listLength = 50;
+    const originalList = generateList(listLength);
+    const evenNumbersList = onlyEvens(originalList);
+    const evenNumbersCount = evenNumbersList.length;
+    
+    console.log('Original: ' + originalList);
+    console.log('Even numbers: ' + evenNumbersList);
+    console.log('There are ' + evenNumbersCount + ' even numbers in the array');
+}
+
+main();
