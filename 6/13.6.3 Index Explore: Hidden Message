@@ -1,0 +1,25 @@
+function main() {
+    let part1 = "Everyone should learn";
+    let part2 = "to program a computer";
+    let part3 = "because it teaches";
+    let part4 = "you how to think."; //Steve Jobs
+
+    console.log(part3[0]); 
+    console.log(part3[3]); 
+    console.log(part1[6]); 
+    console.log(part1[18]);
+    console.log(part4[14]);
+    console.log(part3[13]);
+    
+    console.log("");
+    console.log(part1[9]);
+    console.log(part1[12]);
+    console.log(part1[6]);
+    console.log(part1[14]);
+    console.log(part1[18]);
+    console.log(part1[0]);
+    
+    //Finish the program to complete the hidden message!
+}
+
+main();
